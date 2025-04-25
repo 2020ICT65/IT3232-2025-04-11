@@ -8,13 +8,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Employee {
+public class Employee extends Person{
     @Id
     private String empNo;
-    private String name;
-    private int age;
     private double salary;
-    private String gender;
     @ManyToOne
     private Department department;
     @ManyToMany(mappedBy = "employees")
@@ -31,20 +28,9 @@ public class Employee {
 
     public Employee(String empNo, String name, int age, double salary, Department department, String gender,List<Project> project) {
         this.empNo = empNo;
-        this.name = name;
-        this.age = age;
         this.salary = salary;
-        this.gender = gender;
         this.department = department;
         this.project = project;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public Department getDepartment() {
@@ -61,22 +47,6 @@ public class Employee {
 
     public void setEmpNo(String empNo) {
         this.empNo = empNo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getSalary() {
