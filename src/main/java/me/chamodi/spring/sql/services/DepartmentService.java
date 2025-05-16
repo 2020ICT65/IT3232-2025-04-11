@@ -1,28 +1,21 @@
-package me.chamodi.spring.sql.controller;
+package me.chamodi.spring.sql.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import me.chamodi.spring.sql.models.Department;
-import me.chamodi.spring.sql.repo.DepartmentRepo;
-
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import me.chamodi.spring.sql.models.Department;
+import me.chamodi.spring.sql.repo.DepartmentRepo;
 
-
-
-
-@RestController
-@RequestMapping("/depts")
-public class DepartmentController {
+@Service
+public class DepartmentService {
     @Autowired
     private DepartmentRepo repo;
 
@@ -30,7 +23,7 @@ public class DepartmentController {
     public List<Department> getDepts(){
         return repo.findAll();
     }
-    
+   
     @GetMapping("/{id}")
     public Department getDept(@PathVariable("id") String id) {
         return repo.findById(id).get();
@@ -59,5 +52,4 @@ public class DepartmentController {
         repo.deleteById(id);;
         return "Department Deleted Successfully!";
     }
-
 }
