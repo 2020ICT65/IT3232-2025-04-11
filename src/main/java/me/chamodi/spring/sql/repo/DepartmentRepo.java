@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import me.chamodi.spring.sql.models.Department;
 
 @Repository
-public interface DepartmentRepo extends JpaRepository<Department, Integer>{
+public interface DepartmentRepo extends JpaRepository<Department, String>{
 
 }
